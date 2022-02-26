@@ -9,7 +9,7 @@ dependencies:
  pip install praw
  ```
  
- useage:
+ Useage:
  Register an app on reddit, get the client id and client secret. Add in the details on gubotv1.py
  
  Make a post that for the transactions table
