@@ -2,6 +2,8 @@ import praw
 import json
 from operator import itemgetter
 from time import sleep
+
+#load the database
 f=open('last.json')
 lasttran=json.load(f)  
 f.close() 
