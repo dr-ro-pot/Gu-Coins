@@ -1,7 +1,4 @@
-import pandas as pd
 import praw
-from praw.models import MoreComments
-import time
 import json
 from operator import itemgetter
 from time import sleep
