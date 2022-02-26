@@ -14,7 +14,7 @@ dependencies:
  
  Make a post that for the transactions table
  
- Note that the json files have some previous data, this is to show the how data is formatted
+ Note that the json files have some previous data, this is to show the how data is formatted in these files. 
  
  You can remove the data for your project.
  
