@@ -15,18 +15,34 @@ f=open('process.json')
 pro=json.load(f)  
 f.close()  
 
-def checkbalance(uname):
+
+#Register a reddit API
+cl='client secret'
+nam='client name'
+cid='client id'
+reddit = praw.Reddit(user_agent="gu-coin bot (by /u/Gu-Coin)",client_id=cid, client_secret=cl,    password="password",username="uname",)
+
+
+stats=reddit.submission('t0i7fl')# the post we keep editing https://www.reddit.com/user/Gu-Coin/comments/t0i7fl/statistics_regarding_gucoins/
+rich='''
+**Top 100 richest**\n\n
+| Rank | User | Balance | Last transaction|
+|--------|------------|--------|--------|
+''' #this is how we start a table in reddit markdown
+
+
+def checkbalance(uname): #check how much money a user has, if its the 1st time the user is being listed, give him 100 gu coins
     global data
     for i in data:
         if i[0]==uname:
             return i[1]
-    data+=[[uname,100,'']]
+    data+=[[uname,100,'']] #'Name' string ie the username, balance integer, last transaction string
     f=open('balance.json','w')
     json.dump(data,f)  
     f.close()  
     return (100)
 
-def updatebalance(giver,reciever,value, link):
+def updatebalance(giver,reciever,value, link): #updates the balance of the user giving(user name), recieving(user name), the amount and the link to the comment
     global data
     
     for i in range(len(data)):
@@ -43,26 +59,14 @@ def updatebalance(giver,reciever,value, link):
     f.close()  
     return( giver+' Gave '+str(value)+' Gu-Coins to '+reciever)
 
-def getvalue(strings):
-    start=strings.find('give ')+5
+def getvalue(strings):# function returns integer from 'give 122 gu-coins' string it will return 122 as integer, -1 if no integer was found
+    start=strings.find('give ')+5 
     end=strings.find(' gu-coin')
     try:
         return (int(strings[start:end]))
     except:
         return (-1)
 
-cl='client secret'
-nam='client name'
-cid='client id'
-reddit = praw.Reddit(user_agent="gu-coin bot (by /u/Gu-Coin)",client_id=cid, client_secret=cl,    password="password",username="uname",)
-
-
-stats=reddit.submission('t0i7fl')# the post we keep editing https://www.reddit.com/user/Gu-Coin/comments/t0i7fl/statistics_regarding_gucoins/
-rich='''
-**Top 100 richest**\n\n
-| Rank | User | Balance | Last transaction|
-|--------|------------|--------|--------|
-''' #this is how we start a table in reddit markdown
 
 def updatetable(): #function updates entire table based on data
     x=''
