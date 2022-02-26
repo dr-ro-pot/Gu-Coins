@@ -11,7 +11,12 @@ dependencies:
  
  useage:
  Register an app on reddit, get the client id and client secret. Add in the details on gubotv1.py
+ 
  Make a post that for the transactions table
+ 
  Note that the json files have some previous data, this is to show the how data is formatted
+ 
  You can remove the data for your project.
+ 
  Run bot.
+ 
