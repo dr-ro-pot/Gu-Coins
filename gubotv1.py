@@ -14,9 +14,7 @@ f.close()
 f=open('process.json')
 pro=json.load(f)  
 f.close()  
-for i in range(len(data)):
-    if len(data[i])<3:
-        data[i]+=['']
+
 def checkbalance(uname):
     global data
     for i in data:
